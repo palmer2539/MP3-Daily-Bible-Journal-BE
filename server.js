@@ -1,9 +1,11 @@
 const express = require('Express');
 const notes = require('./database/dailyEntries');
 const dotenv = require('dotenv');
+const dbConnection = require('./config/db');
 
 const app = express();
 dotenv.config();
+dbConnection();
 
 app.get('/', (req, res) => {
   res.send("API is active");
