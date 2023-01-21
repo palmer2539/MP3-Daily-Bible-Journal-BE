@@ -8,7 +8,7 @@ router.route('/').get(protectAPI, getEntries);
 router.route('/make').post(protectAPI, makeEntry);
 router
   .route('/:id')
-  .get(protectAPI, getEntryById)
+  .get(getEntryById)
   .put(protectAPI, changeEntry)
   .delete(protectAPI, removeEntry);
 
