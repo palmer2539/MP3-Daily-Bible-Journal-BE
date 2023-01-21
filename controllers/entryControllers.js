@@ -2,13 +2,12 @@ const asyncHandler = require('express-async-handler');
 const Entry = require ('../models/entryModel');
 
 const getEntries = asyncHandler ( async (req, res) => {
-  const entries = await Entry.find()
+  const entries = await Entry.find({ user: req.user._id });
   res.json(entries);
 });
 
 const makeEntry = asyncHandler ( async (req, res) => {
   const { heading, content, bible_book } = req.body;
-
 
   if (!heading || !content || !bible_book) {
     res.status(400)
@@ -24,7 +23,6 @@ const makeEntry = asyncHandler ( async (req, res) => {
 
 
 const getEntryById = asyncHandler ( async (req, res) => {
-
   const entry = await Entry.findById(req.params.id);
 
   if (entry) {

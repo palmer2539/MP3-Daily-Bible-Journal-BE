@@ -5,8 +5,6 @@ const User = require('../models/userModel');
 const protectAPI = asyncHandler ( async (req, res, next) => {
   let token;
 
-
-
   if (
     req.headers.authorization &&
     req.headers.authorization.startsWith("Bearer")
