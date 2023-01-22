@@ -5,12 +5,20 @@ const entryRoutes = require('./routes/entryRoutes');
 const { notFound, errorHandler } = require('./middleware/errorHandling');
 const dbConnection = require('./db');
 const app = express();
-
+const cors=require("cors");
 
 app.use(express.json());
 
 dotenv.config();
 dbConnection();
+
+const corsOptions ={
+   origin:'*', 
+   credentials:true,           
+   optionSuccessStatus:200,
+}
+
+app.use(cors(corsOptions)) 
 
 // app.use(function(req, res, next) {
 //   res.header("Access-Control-Allow-Origin", 
@@ -25,15 +33,9 @@ dbConnection();
 //   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 //   next();
 // });
+
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
-  res.header("Access-Control-Allow-Origin", "https://dailybiblejournal.onrender.com/signup"); // update to match the domain you will make the request from
-  res.header("Access-Control-Allow-Origin", "https://dailybiblejournal.onrender.com/users"); // update to match the domain you will make the request from
-  res.header("Access-Control-Allow-Origin", "https://dailybiblejournal.onrender.com/users/login"); // update to match the domain you will make the request from
-  res.header("Access-Control-Allow-Origin", "https://dailybiblejournal.onrender.com/users/login/account"); // update to match the domain you will make the request from
-  res.header("Access-Control-Allow-Origin", "https://dailybiblejournal.onrender.com/journalentries"); // update to match the domain you will make the request from
-  res.header("Access-Control-Allow-Origin", "https://dailybiblejournal.onrender.com/journalentries/make"); // update to match the domain you will make the request from
-  res.header("Access-Control-Allow-Origin", "https://dailybiblejournal.onrender.com/journalentries/:id"); // update to match the domain you will make the request from
   res.header("Access-Control-Allow-Methods", "GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS"); // update to match the domain you will make the request from
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
@@ -52,14 +54,8 @@ app.use(notFound);
 app.use(errorHandler);
 
 
-const cors=require("cors");
-const corsOptions ={
-   origin:'*', 
-   credentials:true,           
-   optionSuccessStatus:200,
-}
 
-app.use(cors(corsOptions)) 
+
 
 
 const PORT = process.env.PORT || 5000;
