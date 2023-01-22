@@ -6,7 +6,7 @@ const app = express();
 const cors=require("cors");
 const corsOptions ={ origin:'*', methods:'GET,PUT,POST,DELETE,OPTIONS' , credentials:true, optionSuccessStatus:200,}
 
-app.use(cors(corsOptions)) 
+app.use(cors()) 
 
 router.route('/').post(registerUser);
 router.route('/login').post(authorizeUser);
