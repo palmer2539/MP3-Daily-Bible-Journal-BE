@@ -27,6 +27,16 @@ app.use(notFound);
 app.use(errorHandler);
 
 
+const cors=require("cors");
+const corsOptions ={
+   origin:'*', 
+   credentials:true,           
+   optionSuccessStatus:200,
+}
+
+app.use(cors(corsOptions)) 
+
+
 const PORT = process.env.PORT || 5000;
 
 
