@@ -6,7 +6,7 @@ const { notFound, errorHandler } = require('./middleware/errorHandling');
 const dbConnection = require('./db');
 const app = express();
 const cors=require("cors");
-const corsOptions ={ origin:'https://dailybiblejournal.onrender.com/', methods:'GET,PUT,POST,DELETE,OPTIONS' , credentials:true, optionSuccessStatus:200,}
+const corsOptions ={ origin:'*', methods:'GET,PUT,POST,DELETE,OPTIONS' , credentials:true, optionSuccessStatus:200,}
 
 dotenv.config();
 dbConnection();
@@ -30,9 +30,9 @@ app.use(cors(corsOptions))
 // });
 
 
+//  app.use(cors(corsOptions)), 
 
-
-app.get('/', app.use(cors(corsOptions)), (req, res) => {
+app.get('/', (req, res) => {
   res.send("API is active");
 });
 app.use('/users', userRoutes);
