@@ -2,6 +2,7 @@ const express = require('express');
 const { getEntries, makeEntry, getEntryById, changeEntry, removeEntry} = require('../controllers/entryControllers');
 const { protectAPI } = require('../middleware/authenticateMiddleware');
 const router = express.Router();
+const app = express();
 const cors=require("cors");
 const corsOptions ={ origin:'*', methods:'GET,PUT,POST,DELETE,OPTIONS' , credentials:true, optionSuccessStatus:200,}
 
