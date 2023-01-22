@@ -36,8 +36,8 @@ app.use(cors(corsOptions))
 app.get('/', (req, res) => {
   res.send("API is active");
 });
-app.use('/users', userRoutes);
-app.use('/journalentries', entryRoutes);
+app.use('/users', app.use(cors(corsOptions)), userRoutes);
+app.use('/journalentries', app.use(cors(corsOptions)),  entryRoutes);
 app.use(notFound);
 app.use(errorHandler);
 
