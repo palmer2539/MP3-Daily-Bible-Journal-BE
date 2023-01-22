@@ -1,12 +1,10 @@
 const express = require('Express');
 const dotenv = require('dotenv');
-const dbConnection = require('./config/db');
 const userRoutes = require('./routes/userRoutes');
 const entryRoutes = require('./routes/entryRoutes');
 const { notFound, errorHandler } = require('./middleware/errorHandling');
+const dbConnection = require('./db');
 const app = express();
-
-
 
 
 
