@@ -6,7 +6,8 @@ const { notFound, errorHandler } = require('./middleware/errorHandling');
 const dbConnection = require('./db');
 const app = express();
 const cors=require("cors");
-const corsOptions ={ origin:'*', methods:'GET,PUT,POST,DELETE,OPTIONS' , credentials:true, optionSuccessStatus:200,}
+const corsOptions ={ origin:'*', methods:['GET', 'PUT', 'POST', 'DELETE'], 
+  credentials:true, optionSuccessStatus:200,}
 
 dotenv.config();
 dbConnection();
