@@ -13,7 +13,10 @@ dotenv.config();
 dbConnection();
 
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "https://dailybiblejournal.onrender.com"); // update to match the domain you will make the request from
+  res.header("Access-Control-Allow-Origin", 
+  "https://dailybiblejournal.onrender.com", 
+  "https://dailybiblejournal.onrender.com/journalentries", // update to match the domain you will make the request from
+  "https://dailybiblejournal.onrender.com/journalentries/:id"); // update to match the domain you will make the request from
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
