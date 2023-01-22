@@ -2,6 +2,10 @@ const express = require('express');
 const { registerUser, authorizeUser, updateAccount } = require('../controllers/userControllers');
 const { protectAPI } = require('../middleware/authenticateMiddleware');
 const router = express.Router();
+const cors=require("cors");
+const corsOptions ={ origin:'*', methods:'GET,PUT,POST,DELETE,OPTIONS' , credentials:true, optionSuccessStatus:200,}
+
+app.use(cors(corsOptions)) 
 
 router.route('/').post(registerUser);
 router.route('/login').post(authorizeUser);
